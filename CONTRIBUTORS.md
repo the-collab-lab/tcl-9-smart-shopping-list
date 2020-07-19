@@ -5,4 +5,6 @@
 
 ## Mentors
 
+- [Yves Gurcan](https://connect.yvesgurcan.com) 🇫🇷
+
 ## Code of Conduct Contacts
