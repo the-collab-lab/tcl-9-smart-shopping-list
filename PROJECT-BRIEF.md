@@ -9,7 +9,7 @@ This project is based on [iNeedToBuy.xyz](https://app.ineedtobuy.xyz/), a mobile
 ### Locations for things
 * Site: https://tcl-9-smart-shopping-list.netlify.app
 * Repo: https://github.com/the-collab-lab/tcl-9-smart-shopping-list
-* Clone URL: <git@github.com:the-collab-lab/tcl-9-smart-shopping-list.git>
+* Clone URL: `git@github.com:the-collab-lab/tcl-9-smart-shopping-list.git`
 * Issue list: https://github.com/the-collab-lab/tcl-9-smart-shopping-list/projects/1
 * Database: https://console.firebase.google.com/u/0/project/tcl-9-smart-shopping-list/database
 
