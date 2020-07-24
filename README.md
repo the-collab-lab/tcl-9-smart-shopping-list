@@ -55,7 +55,7 @@ For additional details on how your cohort will operate, please check out the [pr
 
 ## Update dependencies
 
-* Once you have the project locally and you and in the project directory, you’ll want to update all the project’s dependancies. To do so, type the following into your terminal: `npm update`
+* Once you have the project locally and you and in the project directory, you’ll want to update all the project’s dependencies. To do so, type the following into your terminal: `npm update`
 ![screenshot of npm update in the terminal](https://cdn.zappy.app/b7619c19e38166329334430335746d3b.png)
 * Maybe take a sip of coffee or check in on Twitter, this could take a minute -- don’t worry.
 
