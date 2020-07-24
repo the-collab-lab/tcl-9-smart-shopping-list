@@ -7,7 +7,7 @@ The goal of this project is to work together to build a “smart” shopping lis
 This project is based on [iNeedToBuy.xyz](https://app.ineedtobuy.xyz/), a mobile web app Andrew built for his own use in early 2019.
 
 ### Locations for things
-* Site: {link to cohort live site}
+* Site: https://tcl-9-smart-shopping-list.netlify.app/
 * Repo: {link to cohort repo}
 * Clone URL: `{clone URL}`
 * Issue list: {link to cohort repo issues}
