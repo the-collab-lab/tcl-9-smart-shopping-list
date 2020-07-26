@@ -3,7 +3,7 @@
 ## Cohort Participants
 
 - [Leigh-Ann Crivella](http://github.com/lacrivella)
-
+- [Fabrice Innocent](https://github.com/fab33150)
 ## Mentors
 
 - [Yves Gurcan](https://connect.yvesgurcan.com) 🇫🇷
