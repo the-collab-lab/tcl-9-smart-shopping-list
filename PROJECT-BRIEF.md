@@ -109,7 +109,7 @@ The “backlog” (the collection of stories) represents the work needed to comp
 
 It’s super helpful both to yourself and the mentors for you to document your work. This can prevent you from losing track of details or decisions you make with your pair buddy. It also allows mentors to catch up on your progress when you ask for help.
 
-Some past cohorts have found success creating [wiki](https://github.com/the-collab-lab/tcl-6-smart-shopping-list/wiki) pages at the start of each week. Others have taken the approach of creating a [draft PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) as one of their first steps in getting started with the work. An advantage of this approach is you can have a conversation about the work right alongside the code. This, coupled with discussions about approach in the issue itself, is nice way of documenting your progress as you go.
+One of the first things you & your pair buddy should do each week is create a [draft PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) for your work. This allows you to have a conversation about the work right alongside the code. Coupled with questions and discussions about your approach in the issue itself, this is nice way of documenting your progress as you go.
 
 ### Development process
 Work will be done on feature branches in git. Branches should be named in the following way:
@@ -136,6 +136,16 @@ When you and your pair partner have working code that you believe is ready to be
 5. Once approved, merge the PR into `main`. (Your code will be built and deployed to production automatically thanks to [Netlify](https://www.netlify.com/).)
 6. Check your work on the [production site]({link to cohort live site}).
 7. Celebrate! 🥳
+
+### Slack
+
+Most of our team coordination will happen through [the Collab Lab Slack team](https://the-collab-lab.slack.com) and, in particular, your team channel.
+
+If you’re not already super familiar with Slack, no worries! Here are a couple of tips to help you use it like a pro!
+
+1. Threads threads threads! No, seriously, threads! 😅 Threads are great because they do 2 really helpful things: 1) They encapsulate conversations so future you is able to find both the question and the answer in one place, 2) They keep notifications to a minimum, giving people the option of following a conversation or not.
+2. Speaking of notifications, tag people in when you need their attention. “`@stacie`, could you review this PR?” is better than “Can someone review this PR?” because the latter may not be seen for a while depending on the person’s notification settings. When you need to alert the whole channel to something, use `@here`. We also have groups set up such as `@group-tcl-9` and `@group-tcl-9-mentors` as shortcuts to tagging in certain groups. Use them!
+3. Use GIFs and emoji liberally! Communicating via text can come across really dry. Don’t be afraid to communicate a little emotion along with that question about React hooks! 🤪
 
 ### What else?
 I’m around 💯% sure I’m forgetting or glossing over something important, so please be noisy on Slack as things come up. The mentors and I will do our best to get you unstuck. Also, lean on each other for help as well! Finally, work in the open so everyone can benefit from your questions.
