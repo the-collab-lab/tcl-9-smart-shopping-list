@@ -4,6 +4,8 @@
 
 - [Leigh-Ann Crivella](http://github.com/lacrivella)
 - [Fabrice Innocent](https://github.com/fab33150)
+- [Mabel Hernandez](https://github.com/MabelM1)
+
 ## Mentors
 
 - [Yves Gurcan](https://connect.yvesgurcan.com) 🇫🇷
