@@ -148,7 +148,7 @@ When you and your pair partner have working code that you believe is ready to be
 3. Incorporate feedback from the other pair team into your work until both you and they are satisfied the code is ready to be merged.
 4. Request that one of the mentors review the PR for final approval.
 5. Once approved, merge the PR into `main`. (Your code will be built and deployed to production automatically thanks to [Netlify](https://www.netlify.com/).)
-6. Check your work on the [production site]({link to cohort live site}).
+6. Check your work on the [production site](https://tcl-9-smart-shopping-list.netlify.app/).
 7. Celebrate! 🥳
 
 ### Slack
