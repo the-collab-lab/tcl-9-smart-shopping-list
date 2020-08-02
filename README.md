@@ -10,7 +10,7 @@ As a user, you will enter items (e.g., “Greek yogurt” or “Paper towels”)
 
 ## Check out an example
 
-The app will work in many of the same ways as [iNeedToBuy.xyz](https://app.ineedtobuy.xyz/) (on which our project is based) with the exception that we will not be implementing barcode scanning (that feature would add a lot of scope to the project and wasn’t all that useful).
+Every team builds their app from the same set of instructions, but each comes out a little different and reflecting the personality of the group.
 
 :tv: &nbsp; Check out a video demo of the app Cohort 6 made here: 
 [![](https://cdn.zappy.app/33815167c45d74c3ae5af232de633add.png)](https://youtu.be/uWgkwY_VBPo)
