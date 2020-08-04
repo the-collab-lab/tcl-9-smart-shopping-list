@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { fb, db } from './lib/firebase';
+import { FirestoreCollection } from 'react-firestore';
 
 function App() {
   return (
@@ -20,6 +20,17 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <FirestoreCollection
+          path={}
+          filter={}
+          render={() => {
+            <div>
+              <button onClick={}>Click me</button>
+            </div>;
+          }}
+        ></FirestoreCollection>
+      </main>
     </div>
   );
 }

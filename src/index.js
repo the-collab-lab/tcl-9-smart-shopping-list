@@ -4,17 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { fb } from './lib/firebase';
-import { FirestoreProvider, FirestoreCollection } from 'react-firestore';
+import { FirestoreProvider } from 'react-firestore';
 
 ReactDOM.render(
   <FirestoreProvider firebase={fb}>
-    <FirestoreCollection
-      path={'users'}
-      filter={['firstName', '==', 'Mike']}
-      render={() => {
-        return <h1>hello</h1>;
-      }}
-    />
     <App />
   </FirestoreProvider>,
   document.getElementById('root'),
