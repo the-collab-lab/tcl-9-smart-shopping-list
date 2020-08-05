@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { FirestoreCollection } from 'react-firestore';
+import FirestoreTest from './FirestoreTest';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -19,17 +19,11 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
       <main>
-        <FirestoreCollection
-          path={}
-          filter={}
-          render={() => {
-            <div>
-              <button onClick={}>Click me</button>
-            </div>;
-          }}
-        ></FirestoreCollection>
+        <div>
+          <FirestoreTest />
+        </div>
       </main>
     </div>
   );
