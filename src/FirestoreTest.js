@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FirestoreCollection } from 'react-firestore';
 
 export default function FirestoreTest() {
+  const [inputValue, setInputValue] = useState();
+
   return (
     <div>
       <FirestoreCollection
@@ -16,6 +18,7 @@ export default function FirestoreTest() {
                   type="text"
                   name="items"
                   placeholder="enter grocery item here"
+                  onChange={event => setInputValue(event.target.value)}
                 />
                 <button type="submit">submit</button>
               </form>
