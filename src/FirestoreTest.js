@@ -11,6 +11,14 @@ export default function FirestoreTest() {
             <div>loading...</div>
           ) : (
             <div>
+              <form>
+                <input
+                  type="text"
+                  name="items"
+                  placeholder="enter grocery item here"
+                />
+                <button type="submit">submit</button>
+              </form>
               <h1>Items</h1>
               <ul>
                 {data.map(items => (
