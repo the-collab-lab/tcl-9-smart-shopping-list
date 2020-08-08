@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import firebase from 'firebase';
 
-export default function FirestoreTest() {
+export default function AddItemForm() {
   const [inputValue, setInputValue] = useState();
 
   const addItem = event => {
