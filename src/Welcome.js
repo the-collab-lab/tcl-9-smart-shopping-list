@@ -13,7 +13,6 @@ const Welcome = () => {
     localStorage.setItem('token', token);
     history.push('/list');
   };
-
   return (
     <div>
       <p>Welcome to your smart shopping list!</p>
