@@ -3,7 +3,7 @@ import firebase from 'firebase';
 
 const AddItem = () => {
   const [inputValue, setInputValue] = useState();
-  const [frequency, setFrequency] = useState();
+  const [frequency, setFrequency] = useState(7);
   const [success, setSuccess] = useState(false);
 
   const addItem = event => {
@@ -19,6 +19,10 @@ const AddItem = () => {
         lastPurchased: null,
       })
       .then(setSuccess(true));
+  };
+
+  const handleOnChange = e => {
+    setFrequency(parseInt(e.target.value));
   };
 
   return (
@@ -39,7 +43,7 @@ const AddItem = () => {
             name="frequency"
             type="radio"
             value={7}
-            onChange={e => setFrequency(e.target.value)}
+            onChange={handleOnChange}
             checked={frequency === 7}
           />
           <label htmlFor="kindofsoon">Kind of Soon</label>
@@ -48,7 +52,7 @@ const AddItem = () => {
             name="frequency"
             type="radio"
             value={14}
-            onChange={e => setFrequency(e.target.value)}
+            onChange={handleOnChange}
             checked={frequency === 14}
           />
           <label htmlFor="notsoon">Not Soon</label>
@@ -57,7 +61,7 @@ const AddItem = () => {
             name="frequency"
             type="radio"
             value={30}
-            onChange={e => setFrequency(e.target.value)}
+            onChange={handleOnChange}
             checked={frequency === 30}
           />
         </fieldset>
