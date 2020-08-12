@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
-
+import NavLinks from './NavLinks';
 const AddItem = () => {
   const [inputValue, setInputValue] = useState();
 
@@ -25,6 +25,7 @@ const AddItem = () => {
           submit
         </button>
       </form>
+      <NavLinks />
     </div>
   );
 };
