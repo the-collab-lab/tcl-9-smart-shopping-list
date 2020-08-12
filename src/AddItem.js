@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
+import useTokenHook from './useTokenHook';
+
 const AddItem = () => {
-  const items = useContext(ItemsContext);
+  const { token } = useTokenHook();
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
   const [success, setSuccess] = useState(false);
 
   const addItem = event => {
     event.preventDefault();
-    const token = localStorage.getItem('token');
-    console.log(localStorage.getItem('token'));
 
     return firebase
       .firestore()
@@ -30,7 +30,6 @@ const AddItem = () => {
 
   return (
     <div>
-      {localStorage.getItem('token')}
       <form>
         <label htmlFor="item">Item</label>
         <input

@@ -1,11 +1,15 @@
 import React from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import NavLinks from './NavLinks';
+import useTokenHook from './useTokenHook';
 
 const List = () => {
+  const { token } = useTokenHook();
+
   return (
     <FirestoreCollection
       path="items"
+      filter={['token', '==', token]}
       render={({ isLoading, data }) => {
         return isLoading ? (
           <div>loading...</div>
