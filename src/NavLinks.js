@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => (
-  <div>
-    <ul>
+  <div className="container">
+    <ul className="nav">
       <li>
         <NavLink
           to="/list"

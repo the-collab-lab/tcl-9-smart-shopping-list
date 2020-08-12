@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
-import { ItemsContext } from './ItemsContext';
-
 const AddItem = () => {
   const items = useContext(ItemsContext);
   const [inputValue, setInputValue] = useState();
@@ -81,7 +79,6 @@ const AddItem = () => {
           submit
         </button>
       </form>
-      {success ? `${inputValue} successfully added to list` : null}
       <NavLinks />
     </div>
   );
