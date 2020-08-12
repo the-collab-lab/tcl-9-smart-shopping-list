@@ -1,5 +1,6 @@
 import React from 'react';
 import { FirestoreCollection } from 'react-firestore';
+import NavLinks from './NavLinks';
 
 const List = () => {
   return (
@@ -16,6 +17,7 @@ const List = () => {
                 <li key={items.id}>{items.name}</li>
               ))}
             </ul>
+            <NavLinks />
           </div>
         );
       }}
