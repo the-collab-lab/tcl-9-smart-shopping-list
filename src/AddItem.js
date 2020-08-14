@@ -22,7 +22,7 @@ const AddItem = () => {
   };
 
   const handleOnChange = e => {
-    setFrequency(parseInt(e.target.value));
+    setFrequency(parseInt(e.target.value, 10));
   };
 
   return (
@@ -69,7 +69,7 @@ const AddItem = () => {
           submit
         </button>
       </form>
-      {success ? 'Success' : null}
+      {success ? `${inputValue} successfully added to list` : null}
     </div>
   );
 };
