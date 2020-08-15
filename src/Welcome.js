@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import getToken from './lib/tokens';
 import { useHistory } from 'react-router-dom';
-
 const Welcome = () => {
   const history = useHistory();
   useEffect(() => {
@@ -14,6 +13,7 @@ const Welcome = () => {
     localStorage.setItem('token', token);
     history.push('/list');
   };
+
   return (
     <div>
       <p>Welcome to your smart shopping list!</p>
