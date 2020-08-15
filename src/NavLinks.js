@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Home = () => (
+const NavLinks = () => (
   <div className="container">
     <ul className="nav">
       <li>
@@ -23,4 +23,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default NavLinks;
