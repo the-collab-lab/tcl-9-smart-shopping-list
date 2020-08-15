@@ -17,20 +17,23 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome}></Route>
-        <Route path="/list" component={List}></Route>
-        <Route path="/add" component={AddItem}></Route>
+        <Route exact path="/" component={Welcome} />
+        <PrivateRoute path="/list">
+          <List />
+        </PrivateRoute>
+        <PrivateRoute path="/add">
+          <AddItem />
+        </PrivateRoute>
       </Switch>
     </Router>
   );
 }
 function PrivateRoute({ children, ...rest }) {
-  const { token } = useTokenHook();
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        token ? (
+        localStorage.getItem('token') ? (
           children
         ) : (
           <Redirect

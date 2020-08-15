@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+<<<<<<< HEAD
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import useTokenHook from './useTokenHook';
 
+=======
+>>>>>>> add private routes
 const Welcome = () => {
   const { getExistingToken, createToken, token, setToken } = useTokenHook();
   
@@ -23,6 +26,7 @@ const Welcome = () => {
     createToken();
   };
 
+<<<<<<< HEAD
   const handleInput = e => {
     setTokenQuery(e.target.value);
   };
@@ -49,6 +53,8 @@ const Welcome = () => {
     queryDatabase(tokenQuery);
   };
 
+=======
+>>>>>>> add private routes
   return (
     <div>
       <p>Welcome to your smart shopping list!</p>
