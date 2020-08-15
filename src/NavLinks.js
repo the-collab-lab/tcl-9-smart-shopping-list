@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Home = () => (
-  <div className="container">
-    <ul className="nav">
+const NavLinks = () => (
+  <div>
+    <ul>
       <li>
         <NavLink
           to="/list"
@@ -23,4 +23,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default NavLinks;
