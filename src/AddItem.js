@@ -9,26 +9,19 @@ const AddItem = () => {
 
   const addItem = event => {
     event.preventDefault();
+    const token = localStorage.getItem('token');
+    console.log(localStorage.getItem('token'));
 
-    const db = firebase.firestore();
-    const cleanInput = inputValue
-      .toLowerCase()
-      .trim()
-      .replace(/[.,\/#!$+%\^&\*;:{}=\-_`~()]/g, '');
-
-    const itemNames = items.map(data => data.name);
-    if (!itemNames.includes(cleanInput)) {
-      db.collection('items')
-        .add({
-          token: '143',
-          name: cleanInput,
-          frequency: frequency,
-          lastPurchased: null,
-        })
-        .then(setSuccess(true));
-    } else {
-      alert(cleanInput + ' already exists on your list');
-    }
+    return firebase
+      .firestore()
+      .collection('items')
+      .add({
+        token: token,
+        name: inputValue,
+        frequency: frequency,
+        lastPurchased: null,
+      })
+      .then(setSuccess(true));
   };
 
   const handleOnChange = e => {
@@ -37,6 +30,7 @@ const AddItem = () => {
 
   return (
     <div>
+      {localStorage.getItem('token')}
       <form>
         <label htmlFor="item">Item</label>
         <input
