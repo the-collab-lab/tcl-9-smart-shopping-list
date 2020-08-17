@@ -9,6 +9,23 @@ const AddItem = () => {
   const addItem = event => {
     event.preventDefault();
 
+    const db = firebase.firestore();
+    const cleanInput = inputValue
+      .toLowerCase()
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    console.log('clean input', cleanInput);
+
+    db.collection('items')
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          let item = doc.data();
+          if (cleanInput === item.name) {
+            return;
+          }
+        });
+      });
+
     return firebase
       .firestore()
       .collection('items')
@@ -25,6 +42,28 @@ const AddItem = () => {
     setFrequency(parseInt(e.target.value, 10));
   };
 
+  const handleInput = event => {
+    const db = firebase.firestore();
+    const cleanInput = inputValue
+      .toLowerCase()
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    console.log('event', event);
+    console.log(
+      db
+        .collection('items')
+        .get()
+        .then(snapshot => {
+          snapshot.docs.forEach(doc => {
+            let items = doc.data();
+            /* Make data suitable for rendering */
+            console.log(items.name);
+            items = JSON.stringify(items);
+          });
+        }),
+    );
+
+    console.log(cleanInput);
+  };
   return (
     <div>
       <form>
