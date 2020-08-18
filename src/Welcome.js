@@ -56,6 +56,7 @@ const Welcome = () => {
           render={({ loading, data }) => {
             return (
               <div>
+                {/* Error message begins here, we'll have to updated the List component in order for it to render properly below */}
                 {data.length === 0 ? (
                   <p>Sorry not a token! Try again...</p>
                 ) : null}
