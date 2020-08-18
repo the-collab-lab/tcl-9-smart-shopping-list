@@ -5,7 +5,7 @@ import { FirestoreCollection } from 'react-firestore';
 
 const Welcome = () => {
   const [token, setToken] = useState();
-
+  const [searchDatabase, setsearchDatabase] = useState(false);
   const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -22,9 +22,12 @@ const Welcome = () => {
     setToken(e.target.value);
   };
 
+  const goToList = () => history.push('/list');
+
   //TODO: VALIDATE USER ENTERS 3 WORDS
   const handleSubmit = e => {
     e.preventDefault();
+    setsearchDatabase(true);
     console.log(token);
   };
 
@@ -46,14 +49,23 @@ const Welcome = () => {
           Join an existing list
         </button>
       </form>
-      {/* token && <FirestoreCollection
-      path="items"
-      filter={['token', '==', token]}
-      render={({loading,data}) => {
-      
-        console.log(data)
-      }} 
-    /> */}
+      {searchDatabase && (
+        <FirestoreCollection
+          path="items"
+          filter={['token', '==', token]}
+          render={({ loading, data }) => {
+            return (
+              <div>
+                {data.length === 0 ? (
+                  <p>Sorry not a token! Try again...</p>
+                ) : null}
+
+                {data.lenth > 0 ? goToList : null}
+              </div>
+            );
+          }}
+        />
+      )}
     </div>
   );
 };
