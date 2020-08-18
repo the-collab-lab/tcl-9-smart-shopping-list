@@ -13,57 +13,30 @@ const AddItem = () => {
     const cleanInput = inputValue
       .toLowerCase()
       .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-    console.log('clean input', cleanInput);
 
     db.collection('items')
       .get()
       .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          let item = doc.data();
-          if (cleanInput === item.name) {
-            return;
-          }
-        });
+        const items = snapshot.docs.map(d => d.data()).map(data => data.name);
+        if (!items.includes(cleanInput)) {
+          db.collection('items')
+            .add({
+              token: '143',
+              name: cleanInput,
+              frequency: frequency,
+              lastPurchased: null,
+            })
+            .then(setSuccess(true));
+        } else {
+          alert('already exists');
+        }
       });
-
-    return firebase
-      .firestore()
-      .collection('items')
-      .add({
-        token: '143',
-        name: inputValue,
-        frequency: frequency,
-        lastPurchased: null,
-      })
-      .then(setSuccess(true));
   };
 
   const handleOnChange = e => {
     setFrequency(parseInt(e.target.value, 10));
   };
 
-  const handleInput = event => {
-    const db = firebase.firestore();
-    const cleanInput = inputValue
-      .toLowerCase()
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-    console.log('event', event);
-    console.log(
-      db
-        .collection('items')
-        .get()
-        .then(snapshot => {
-          snapshot.docs.forEach(doc => {
-            let items = doc.data();
-            /* Make data suitable for rendering */
-            console.log(items.name);
-            items = JSON.stringify(items);
-          });
-        }),
-    );
-
-    console.log(cleanInput);
-  };
   return (
     <div>
       <form>
