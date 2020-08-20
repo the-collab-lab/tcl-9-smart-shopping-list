@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
+
 const AddItem = () => {
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
