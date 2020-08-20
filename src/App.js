@@ -16,24 +16,27 @@ import TokenProvider from './TokenProvider';
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Welcome} />
-        <PrivateRoute path="/list">
-          <List />
-        </PrivateRoute>
-        <PrivateRoute path="/add">
-          <AddItem />
-        </PrivateRoute>
-      </Switch>
+      <TokenProvider>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <PrivateRoute path="/list">
+            <List />
+          </PrivateRoute>
+          <PrivateRoute path="/add">
+            <AddItem />
+          </PrivateRoute>
+        </Switch>
+      </TokenProvider>
     </Router>
   );
 }
 function PrivateRoute({ children, ...rest }) {
+  const { token } = useTokenHook();
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        localStorage.getItem('token') ? (
+        token ? (
           children
         ) : (
           <Redirect
