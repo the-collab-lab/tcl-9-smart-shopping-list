@@ -1,20 +1,27 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { db } from './lib/firebase';
+import firebase from 'firebase';
 
-const ItemsContext = createContext();
+export const ItemsContext = createContext();
 
 const ItemsProvider = props => {
   //set useState([]) for list
   const [items, setItems] = useState([]);
+  const db = firebase.firestore();
 
-  // useEffect(() => {
-  //   setItems(db.collection('items')
-  //   .get()
-  //   .then(snapshot => {
-  //     const items = snapshot.docs.map(d => d.data()).map(data => data.name);)
-  // }, []);
+  useEffect(() => {
+    db.collection('items')
+      .get()
+      .then(snapshot => {
+        const list = snapshot.docs.map(doc => doc.data());
+        setItems(list);
+      });
+  }, []);
 
-  return <ItemsContext.Provider>{props}</ItemsContext.Provider>;
+  return (
+    <ItemsContext.Provider value={items}>
+      {props.children}
+    </ItemsContext.Provider>
+  );
 };
 
 export default ItemsProvider;

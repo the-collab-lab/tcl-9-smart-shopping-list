@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
+import { ItemsContext } from './ItemsContext';
 
 const AddItem = () => {
+  const items = useContext(ItemsContext);
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
   const [success, setSuccess] = useState(false);
@@ -15,23 +17,19 @@ const AddItem = () => {
       .toLowerCase()
       .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
 
-    db.collection('items')
-      .get()
-      .then(snapshot => {
-        const items = snapshot.docs.map(d => d.data()).map(data => data.name);
-        if (!items.includes(cleanInput)) {
-          db.collection('items')
-            .add({
-              token: '143',
-              name: cleanInput,
-              frequency: frequency,
-              lastPurchased: null,
-            })
-            .then(setSuccess(true));
-        } else {
-          alert('already exists');
-        }
-      });
+    const itemNames = items.map(data => data.name);
+    if (!itemNames.includes(cleanInput)) {
+      db.collection('items')
+        .add({
+          token: '143',
+          name: cleanInput,
+          frequency: frequency,
+          lastPurchased: null,
+        })
+        .then(setSuccess(true));
+    } else {
+      alert('already exists');
+    }
   };
 
   const handleOnChange = e => {
