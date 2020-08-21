@@ -5,10 +5,14 @@ const ItemsContext = createContext();
 
 const ItemsProvider = props => {
   //set useState([]) for list
+  const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    // put ln 14-15 here?
-  }, []);
+  // useEffect(() => {
+  //   setItems(db.collection('items')
+  //   .get()
+  //   .then(snapshot => {
+  //     const items = snapshot.docs.map(d => d.data()).map(data => data.name);)
+  // }, []);
 
   return <ItemsContext.Provider>{props}</ItemsContext.Provider>;
 };
