@@ -15,7 +15,8 @@ const AddItem = () => {
     const db = firebase.firestore();
     const cleanInput = inputValue
       .toLowerCase()
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+      .trim()
+      .replace(/[.,\/#!$+%\^&\*;:{}=\-_`~()]/g, '');
 
     const itemNames = items.map(data => data.name);
     if (!itemNames.includes(cleanInput)) {
@@ -28,7 +29,7 @@ const AddItem = () => {
         })
         .then(setSuccess(true));
     } else {
-      alert('already exists');
+      alert(cleanInput + ' already exists on your list');
     }
   };
 
