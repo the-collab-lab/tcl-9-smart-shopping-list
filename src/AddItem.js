@@ -9,16 +9,28 @@ const AddItem = () => {
   const addItem = event => {
     event.preventDefault();
 
-    return firebase
-      .firestore()
-      .collection('items')
-      .add({
-        token: '143',
-        name: inputValue,
-        frequency: frequency,
-        lastPurchased: null,
-      })
-      .then(setSuccess(true));
+    const db = firebase.firestore();
+    const cleanInput = inputValue
+      .toLowerCase()
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+
+    db.collection('items')
+      .get()
+      .then(snapshot => {
+        const items = snapshot.docs.map(d => d.data()).map(data => data.name);
+        if (!items.includes(cleanInput)) {
+          db.collection('items')
+            .add({
+              token: '143',
+              name: cleanInput,
+              frequency: frequency,
+              lastPurchased: null,
+            })
+            .then(setSuccess(true));
+        } else {
+          alert('already exists');
+        }
+      });
   };
 
   const handleOnChange = e => {
