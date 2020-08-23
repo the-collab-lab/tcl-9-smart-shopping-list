@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TokenContext from './TokenContext';
 import getToken from './lib/tokens';
 
 export default props => {
   const [token, setToken] = useState(null);
 
+  useEffect(() => {
+    const getLocalStorageToken = () => {
+      const existingToken = localStorage.getItem('token');
+
+      if (existingToken) {
+        setToken(existingToken);
+      }
+    };
+    getLocalStorageToken();
+  }, []);
+
   return (
     <TokenContext.Provider
       value={{
-        getExistingToken: () => {
-          const existingToken = localStorage.getItem('token');
+        setLocalStorageToken: userInput => {
+          let tokenValue = null;
 
-          if (existingToken) {
-            setToken(existingToken);
+          if (userInput) {
+            tokenValue = userInput;
+          } else {
+            tokenValue = getToken();
           }
-
-          return existingToken;
-        },
-        createToken: () => {
-          const newToken = getToken();
-          localStorage.setItem('token', newToken);
-          setToken(newToken);
-        },
-        setToken: tokenValue => {
           localStorage.setItem('token', tokenValue);
           setToken(tokenValue);
         },

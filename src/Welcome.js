@@ -6,21 +6,15 @@ import useTokenHook from './useTokenHook';
 
 
 const Welcome = () => {
-  const { getExistingToken, createToken, token, setToken } = useTokenHook();
+  const { token, setLocalStorageToken } = useTokenHook();
+
   const [tokenQuery, setTokenQuery] = useState();
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const history = useHistory();
 
-  useEffect(() => {
-    const tokenExist = getExistingToken();
-    if (tokenExist) {
-      history.push('/list');
-    }
-  }, [history]);
-
   const handleClick = () => {
-    createToken();
+    setLocalStorageToken();
   };
 
 
@@ -34,15 +28,15 @@ const Welcome = () => {
     if (snapshot.empty) {
       setShowErrorMessage(true);
     } else {
-      setToken(searchTerm);
+      setLocalStorageToken(searchTerm);
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (token) {
       history.push('/list');
     }
-  }, [token]);
+  }, [history, token]);
 
   //TODO: VALIDATE USER ENTERS 3 WORDS
   const handleSubmit = e => {
