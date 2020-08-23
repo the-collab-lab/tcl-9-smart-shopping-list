@@ -16,7 +16,7 @@ const AddItem = () => {
       .firestore()
       .collection('items')
       .add({
-        token: token,
+        token,
         name: inputValue,
         frequency: frequency,
         lastPurchased: null,
