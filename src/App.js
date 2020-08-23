@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import ItemsProvider from './ItemsContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,17 +13,19 @@ import Welcome from './Welcome';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Welcome} />
-        <PrivateRoute path="/list">
-          <List />
-        </PrivateRoute>
-        <PrivateRoute path="/add">
-          <AddItem />
-        </PrivateRoute>
-      </Switch>
-    </Router>
+    <ItemsProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <PrivateRoute path="/list">
+            <List />
+          </PrivateRoute>
+          <PrivateRoute path="/add">
+            <AddItem />
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </ItemsProvider>
   );
 }
 function PrivateRoute({ children, ...rest }) {
