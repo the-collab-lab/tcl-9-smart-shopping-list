@@ -2,6 +2,7 @@ import React from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import NavLinks from './NavLinks';
 import useTokenHook from './useTokenHook';
+import { ItemsContext } from './ItemsContext';
 
 const List = () => {
   const { token } = useTokenHook();
