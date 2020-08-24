@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
+import { ItemsContext } from './ItemsContext';
 import useTokenHook from './useTokenHook';
 
 const AddItem = () => {
@@ -81,6 +82,7 @@ const AddItem = () => {
           submit
         </button>
       </form>
+      {success ? `${inputValue} successfully added to list` : null}
       <NavLinks />
     </div>
   );
