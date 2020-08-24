@@ -2,16 +2,17 @@ import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
+import useTokenHook from './useTokenHook';
 
 const AddItem = () => {
   const items = useContext(ItemsContext);
+  const { token } = useTokenHook();
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
   const [success, setSuccess] = useState(false);
 
   const addItem = event => {
     event.preventDefault();
-
     const db = firebase.firestore();
     const cleanInput = inputValue
       .toLowerCase()
@@ -22,7 +23,7 @@ const AddItem = () => {
     if (!itemNames.includes(cleanInput)) {
       db.collection('items')
         .add({
-          token: '143',
+          token,
           name: cleanInput,
           frequency: frequency,
           lastPurchased: null,
