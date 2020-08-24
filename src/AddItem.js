@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
+import { ItemsContext } from './ItemsContext';
+import useTokenHook from './useTokenHook';
+
 const AddItem = () => {
+  const items = useContext(ItemsContext);
+  const { token } = useTokenHook();
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
   const [success, setSuccess] = useState(false);
 
   const addItem = event => {
     event.preventDefault();
+    const db = firebase.firestore();
+    const cleanInput = inputValue
+      .toLowerCase()
+      .trim()
+      .replace(/[.,\/#!$+%\^&\*;:{}=\-_`~()]/g, '');
 
-    return firebase
-      .firestore()
-      .collection('items')
-      .add({
-        token: '143',
-        name: inputValue,
-        frequency: frequency,
-        lastPurchased: null,
-      })
-      .then(setSuccess(true));
+    const itemNames = items.map(data => data.name);
+    if (!itemNames.includes(cleanInput)) {
+      db.collection('items')
+        .add({
+          token,
+          name: cleanInput,
+          frequency: frequency,
+          lastPurchased: null,
+        })
+        .then(setSuccess(true));
+    } else {
+      alert(cleanInput + ' already exists on your list');
+    }
   };
 
   const handleOnChange = e => {
