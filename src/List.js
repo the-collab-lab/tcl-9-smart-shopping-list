@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import firebase from 'firebase';
 
@@ -19,6 +19,10 @@ const List = () => {
     var itemRef = db.collection('items').doc(e.target.id);
     itemRef.update(newData);
   };
+
+  useEffect(() => {
+    console.log('items', items);
+  }, []);
 
   return (
     <FirestoreCollection
