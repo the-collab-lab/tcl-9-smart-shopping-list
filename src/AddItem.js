@@ -5,7 +5,7 @@ import { ItemsContext } from './ItemsContext';
 import useTokenHook from './useTokenHook';
 
 const AddItem = () => {
-  const items = useContext(ItemsContext);
+  const { items } = useContext(ItemsContext);
   const { token } = useTokenHook();
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);

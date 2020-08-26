@@ -18,12 +18,22 @@ const ItemsProvider = props => {
           const newObj = { ...doc.data(), id: doc.id };
           return newObj;
         });
+        console.log('provided list', list);
         setItems(list);
       });
   }, []);
 
   return (
-    <ItemsContext.Provider value={items}>
+    <ItemsContext.Provider
+      value={{
+        updateItems: ({ data, id }) => {
+          // setItems(items);
+          var itemRef = db.collection('items').doc(id);
+          itemRef.update(data);
+        },
+        items,
+      }}
+    >
       {props.children}
     </ItemsContext.Provider>
   );

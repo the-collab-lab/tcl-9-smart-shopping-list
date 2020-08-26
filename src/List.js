@@ -7,7 +7,7 @@ import useTokenHook from './useTokenHook';
 import { ItemsContext } from './ItemsContext';
 
 const List = () => {
-  const items = useContext(ItemsContext);
+  const { items, updateItems } = useContext(ItemsContext);
 
   const [isLoading, setIsLoading] = useState();
 
@@ -15,6 +15,7 @@ const List = () => {
 
   const db = firebase.firestore();
   const { token } = useTokenHook();
+
   const handleChange = async e => {
     // const checkedItem = items.filter(item => item.name === e.target.name)[0];
     // console.log(checkedItem);
@@ -22,9 +23,8 @@ const List = () => {
     // console.log(checkedItem);
 
     const newData = { lastPurchased: Date.now() };
-    var itemRef = db.collection('items').doc(e.target.id);
 
-    itemRef.update(newData);
+    updateItems({ data: newData, id: e.target.id });
   };
 
   //opus typic stag
