@@ -14,7 +14,10 @@ const ItemsProvider = props => {
       .where('token', '==', userToken)
       .get()
       .then(snapshot => {
-        const list = snapshot.docs.map(doc => doc.data());
+        const list = snapshot.docs.map(doc => {
+          const newObj = { ...doc.data(), id: doc.id };
+          return newObj;
+        });
         setItems(list);
       });
   }, []);
