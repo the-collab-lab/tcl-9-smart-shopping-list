@@ -1,33 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FirestoreCollection } from 'react-firestore';
+import React, { useContext } from 'react';
 import firebase from 'firebase';
-
 import NavLinks from './NavLinks';
-import useTokenHook from './useTokenHook';
 import { ItemsContext } from './ItemsContext';
 
 const List = () => {
-  const { items, updateItems } = useContext(ItemsContext);
-
-  const [isLoading, setIsLoading] = useState();
+  const items = useContext(ItemsContext);
 
   const now = new Date(Date.now());
 
-  const db = firebase.firestore();
-  const { token } = useTokenHook();
-
   const handleChange = async e => {
-    // const checkedItem = items.filter(item => item.name === e.target.name)[0];
-    // console.log(checkedItem);
-    // checkedItem.lastPurchased = Date.now();
-    // console.log(checkedItem);
-
     const newData = { lastPurchased: Date.now() };
+    const db = firebase.firestore();
 
-    updateItems({ data: newData, id: e.target.id });
+    const itemRef = db.collection('items').doc(e.target.id);
+    itemRef.update(newData);
   };
-
-  //opus typic stag
 
   return (
     <div>
@@ -37,14 +24,14 @@ const List = () => {
           <ul>
             {items.map(item => (
               <li key={item.id}>
-                {console.log(item)}
                 <input
                   type="checkbox"
                   onChange={handleChange}
                   id={item.id}
                   checked={
-                    item.lastPurchased &&
-                    now < item.lastPurchased + 1000 * 60 * 60 * 24
+                    (item.lastPurchased &&
+                      now < item.lastPurchased + 1000 * 60 * 60 * 24) ||
+                    false
                   }
                   disabled={
                     item.lastPurchased &&
@@ -61,34 +48,6 @@ const List = () => {
         <div>loading...</div>
       )}
     </div>
-    /*<FirestoreCollection
-      path="items"
-      filter={['token', '==', token]}
-      render={({ isLoading, data }) => {
-        return isLoading ? (
-          <div>loading...</div>
-        ) : (
-          <div>
-            <h1>Items</h1>
-            <ul>
-              {data.map(items => (
-                <li key={items.id}>
-                  <input
-                    type="checkbox"
-                    onChange={handleChange}
-                    id={items.id}
-                    name={items.name}
-                    disable={disable}
-                  ></input>
-                  {items.name}
-                </li>
-              ))}
-            </ul>
-            <NavLinks />
-          </div>
-        );
-      }}
-    />*/
   );
 };
 

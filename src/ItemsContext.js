@@ -4,7 +4,6 @@ import firebase from 'firebase';
 export const ItemsContext = createContext();
 
 const ItemsProvider = props => {
-  //set useState([]) for list
   const [items, setItems] = useState([]);
   const db = firebase.firestore();
   const userToken = localStorage.getItem('token');
@@ -12,28 +11,17 @@ const ItemsProvider = props => {
   useEffect(() => {
     db.collection('items')
       .where('token', '==', userToken)
-      .get()
-      .then(snapshot => {
-        const list = snapshot.docs.map(doc => {
+      .onSnapshot(querySnapshot => {
+        const list = querySnapshot.docs.map(doc => {
           const newObj = { ...doc.data(), id: doc.id };
           return newObj;
         });
-        console.log('provided list', list);
         setItems(list);
       });
-  }, []);
+  }, [db, userToken]);
 
   return (
-    <ItemsContext.Provider
-      value={{
-        updateItems: ({ data, id }) => {
-          // setItems(items);
-          var itemRef = db.collection('items').doc(id);
-          itemRef.update(data);
-        },
-        items,
-      }}
-    >
+    <ItemsContext.Provider value={items}>
       {props.children}
     </ItemsContext.Provider>
   );
