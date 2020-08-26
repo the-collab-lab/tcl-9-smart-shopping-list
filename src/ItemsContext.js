@@ -7,9 +7,11 @@ const ItemsProvider = props => {
   //set useState([]) for list
   const [items, setItems] = useState([]);
   const db = firebase.firestore();
+  const userToken = localStorage.getItem('token');
 
   useEffect(() => {
     db.collection('items')
+      .where('token', '==', userToken)
       .get()
       .then(snapshot => {
         const list = snapshot.docs.map(doc => doc.data());
