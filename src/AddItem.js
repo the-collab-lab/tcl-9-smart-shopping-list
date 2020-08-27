@@ -19,7 +19,6 @@ const AddItem = () => {
       .trim()
       .replace(/[.,\/#!$+%\^&\*;:{}=\-_`~()]/g, '');
 
-    console.log('items in AddItem.js', items);
     const itemNames = items.map(data => data.name);
     if (!itemNames.includes(cleanInput)) {
       db.collection('items')
