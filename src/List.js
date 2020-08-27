@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import NavLinks from './NavLinks';
 import useTokenHook from './useTokenHook';
@@ -6,16 +6,13 @@ import { ItemsContext } from './ItemsContext';
 
 const List = () => {
   const { token } = useTokenHook();
-  const items = useContext(ItemsContext);
-  let emptyList = false;
+  const { items } = useContext(ItemsContext);
 
-  console.log('items', items);
+  let emptyList = false;
 
   if (items.length === 0) {
     emptyList = true;
   }
-  console.log('items length', items.length);
-  console.log('empty list', emptyList);
 
   return (
     <FirestoreCollection
