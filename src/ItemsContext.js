@@ -16,7 +16,7 @@ const ItemsProvider = props => {
         const list = snapshot.docs.map(doc => doc.data());
         setItems(list);
       });
-  }, [db, userToken]);
+  }, [db, items, userToken]);
 
   return (
     <ItemsContext.Provider
