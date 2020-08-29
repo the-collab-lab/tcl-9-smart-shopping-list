@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FirestoreCollection } from 'react-firestore';
 import NavLinks from './NavLinks';
 import useTokenHook from './useTokenHook';
+import { ItemsContext } from './ItemsContext';
 
 const List = () => {
   const { token } = useTokenHook();
+  const { items } = useContext(ItemsContext);
+
+  let emptyList = false;
+
+  if (items.length === 0) {
+    emptyList = true;
+  }
 
   return (
     <FirestoreCollection
@@ -16,11 +24,17 @@ const List = () => {
         ) : (
           <div>
             <h1>Items</h1>
-            <ul>
-              {data.map(items => (
-                <li key={items.id}>{items.name}</li>
-              ))}
-            </ul>
+            <div>
+              {emptyList ? (
+                <span>Your list is empty! Please add an item.</span>
+              ) : (
+                <ul>
+                  {data.map(items => (
+                    <li key={items.id}>{items.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
             <NavLinks />
           </div>
         );
