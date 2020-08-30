@@ -11,9 +11,11 @@ const ItemsProvider = props => {
   useEffect(() => {
     db.collection('items')
       .where('token', '==', userToken)
-      .get()
-      .then(snapshot => {
-        const list = snapshot.docs.map(doc => doc.data());
+      .onSnapshot(querySnapshot => {
+        const list = querySnapshot.docs.map(doc => {
+          const newObj = { ...doc.data(), id: doc.id };
+          return newObj;
+        });
         setItems(list);
       });
   }, [db, items, userToken]);
@@ -21,15 +23,6 @@ const ItemsProvider = props => {
   return (
     <ItemsContext.Provider
       value={{
-        updateItems: () => {
-          db.collection('items')
-            .where('token', '==', userToken)
-            .get()
-            .then(snapshot => {
-              const list = snapshot.docs.map(doc => doc.data());
-              setItems(list);
-            });
-        },
         items,
       }}
     >

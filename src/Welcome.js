@@ -4,7 +4,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import useTokenHook from './useTokenHook';
 
-
 const Welcome = () => {
   const { token, setLocalStorageToken } = useTokenHook();
 
@@ -16,7 +15,6 @@ const Welcome = () => {
   const handleClick = () => {
     setLocalStorageToken();
   };
-
 
   const handleInput = e => {
     setTokenQuery(e.target.value);
@@ -43,8 +41,6 @@ const Welcome = () => {
     e.preventDefault();
     queryDatabase(tokenQuery);
   };
-
-
 
   return (
     <div>
