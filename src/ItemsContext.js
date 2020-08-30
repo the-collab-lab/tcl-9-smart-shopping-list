@@ -18,7 +18,7 @@ const ItemsProvider = props => {
         });
         setItems(list);
       });
-  }, [db, userToken]);
+  }, [db, items, userToken]);
 
   return (
     <ItemsContext.Provider value={items}>

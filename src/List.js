@@ -5,6 +5,7 @@ import { ItemsContext } from './ItemsContext';
 
 const List = () => {
   const items = useContext(ItemsContext);
+  const oneDayInMilliSecond = 1000 * 60 * 60 * 24;
 
   const now = new Date(Date.now());
 
@@ -30,12 +31,12 @@ const List = () => {
                   id={item.id}
                   checked={
                     (item.lastPurchased &&
-                      now < item.lastPurchased + 1000 * 60 * 60 * 24) ||
+                      now < item.lastPurchased + oneDayInMilliSecond) ||
                     false
                   }
                   disabled={
                     item.lastPurchased &&
-                    now < item.lastPurchased + 1000 * 60 * 60 * 24
+                    now < item.lastPurchased + oneDayInMilliSecond
                   }
                 ></input>
                 {item.name}
