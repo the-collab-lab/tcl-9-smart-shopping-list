@@ -23,15 +23,6 @@ const ItemsProvider = props => {
   return (
     <ItemsContext.Provider
       value={{
-        updateItems: () => {
-          db.collection('items')
-            .where('token', '==', userToken)
-            .get()
-            .then(snapshot => {
-              const list = snapshot.docs.map(doc => doc.data());
-              setItems(list);
-            });
-        },
         items,
       }}
     >

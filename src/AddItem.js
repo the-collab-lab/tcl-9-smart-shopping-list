@@ -5,7 +5,7 @@ import { ItemsContext } from './ItemsContext';
 import useTokenHook from './useTokenHook';
 
 const AddItem = () => {
-  const { items, updateItems } = useContext(ItemsContext);
+  const { items } = useContext(ItemsContext);
   const { token } = useTokenHook();
   const [inputValue, setInputValue] = useState();
   const [frequency, setFrequency] = useState(7);
@@ -28,8 +28,7 @@ const AddItem = () => {
           frequency: frequency,
           lastPurchased: null,
         })
-        .then(setSuccess(true))
-        .then(updateItems());
+        .then(setSuccess(true));
     } else {
       alert(cleanInput + ' already exists on your list');
     }
