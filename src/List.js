@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
 
 const List = () => {
   const { items } = useContext(ItemsContext);
-
+  const [searchTerm, setTerm] = useState('');
   const oneDayInMilliSecond = 1000 * 60 * 60 * 24;
 
   const now = new Date(Date.now());
@@ -24,9 +24,14 @@ const List = () => {
     itemRef.update(newData);
   };
 
+  function handleSearch(e) {
+    setTerm(e.target.value);
+  }
+
   return (
     <div>
       <h1>Items</h1>
+      <input type="text" value={searchTerm} onChange={handleSearch}></input>
       {emptyList ? (
         <span>Your list is empty! Please add an item.</span>
       ) : (
