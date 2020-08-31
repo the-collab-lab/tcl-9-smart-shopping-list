@@ -24,9 +24,13 @@ const List = () => {
     itemRef.update(newData);
   };
 
-  function handleSearch(e) {
+  const handleSearch = e => {
     setTerm(e.target.value);
-  }
+    const filterItems = items.filter(item => {
+      return item.name.includes(e.target.value);
+    });
+    console.log(filterItems);
+  };
 
   return (
     <div>
