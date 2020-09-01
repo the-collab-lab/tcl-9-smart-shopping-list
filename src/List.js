@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
@@ -6,15 +6,20 @@ import { ItemsContext } from './ItemsContext';
 const List = () => {
   const { items } = useContext(ItemsContext);
   const [searchTerm, setTerm] = useState('');
+  const [filteredItems, setfilteredItems] = useState(items);
+  useEffect(() => {
+    setfilteredItems(items);
+  }, [items]);
+  console.log(filteredItems);
   const oneDayInMilliSecond = 1000 * 60 * 60 * 24;
 
   const now = new Date(Date.now());
 
-  let emptyList = false;
+  //let emptyList = false;
 
-  if (items.length === 0) {
-    emptyList = true;
-  }
+  //if (items.length === 0) {
+  // emptyList = true;
+  //}
 
   const handleChange = async e => {
     const newData = { lastPurchased: Date.now() };
@@ -29,18 +34,18 @@ const List = () => {
     const filterItems = items.filter(item => {
       return item.name.includes(e.target.value);
     });
-    console.log(filterItems);
+    setfilteredItems(filterItems);
   };
 
   return (
     <div>
       <h1>Items</h1>
       <input type="text" value={searchTerm} onChange={handleSearch}></input>
-      {emptyList ? (
+      {filteredItems.length === 0 ? (
         <span>Your list is empty! Please add an item.</span>
       ) : (
         <ul>
-          {items.map(item => (
+          {filteredItems.map(item => (
             <li key={item.id}>
               <input
                 type="checkbox"
