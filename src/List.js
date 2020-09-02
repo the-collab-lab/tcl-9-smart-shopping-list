@@ -10,16 +10,9 @@ const List = () => {
   useEffect(() => {
     setfilteredItems(items);
   }, [items]);
-  console.log(filteredItems);
   const oneDayInMilliSecond = 1000 * 60 * 60 * 24;
 
   const now = new Date(Date.now());
-
-  //let emptyList = false;
-
-  //if (items.length === 0) {
-  // emptyList = true;
-  //}
 
   const handleChange = async e => {
     const newData = { lastPurchased: Date.now() };
@@ -34,13 +27,14 @@ const List = () => {
     const filterItems = items.filter(item => {
       return item.name.includes(e.target.value);
     });
+    // console.log(filterItems);
     setfilteredItems(filterItems);
   };
 
   return (
     <div>
       <h1>Items</h1>
-      <input type="text" value={searchTerm} onChange={handleSearch}></input>
+      <input type="search" value={searchTerm} onChange={handleSearch}></input>
       {filteredItems.length === 0 ? (
         <span>Your list is empty! Please add an item.</span>
       ) : (
