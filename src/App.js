@@ -15,9 +15,9 @@ import TokenProvider from './TokenProvider';
 
 function App() {
   return (
-    <ItemsProvider>
-      <Router>
-        <TokenProvider>
+    <Router>
+      <TokenProvider>
+        <ItemsProvider>
           <Switch>
             <Route exact path="/" component={Welcome} />
             <PrivateRoute path="/list">
@@ -27,9 +27,9 @@ function App() {
               <AddItem />
             </PrivateRoute>
           </Switch>
-        </TokenProvider>
-      </Router>
-    </ItemsProvider>
+        </ItemsProvider>
+      </TokenProvider>
+    </Router>
   );
 }
 function PrivateRoute({ children, ...rest }) {
