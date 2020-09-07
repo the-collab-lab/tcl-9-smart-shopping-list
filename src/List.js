@@ -17,12 +17,10 @@ const List = () => {
     emptyList = true;
   }
 
-  //When the user selects an item, search the items array to find the item selected.
-  //Use the item's last purchased date and the frequency to calculate the estimated
-  //next purchased date. Update the database with the new property items.
-  const handleChange = async e => {
-    const itemSelected = items.filter(ingr => {
-      return ingr.id === e.target.id;
+  const handlePurchase = async e => {
+    // will return only one item in the array
+    const itemSelected = items.filter(item => {
+      return item.id === e.target.id;
     });
 
     const lastPurchasedDate = itemSelected[0].lastPurchased
@@ -53,7 +51,7 @@ const List = () => {
             <li key={item.id}>
               <input
                 type="checkbox"
-                onChange={handleChange}
+                onChange={handlePurchase}
                 id={item.id}
                 checked={
                   (item.lastPurchased &&
