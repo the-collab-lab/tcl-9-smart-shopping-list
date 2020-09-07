@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
+import calculateEstimate from './lib/estimates';
 
 const List = () => {
   const { items } = useContext(ItemsContext);
@@ -16,8 +17,23 @@ const List = () => {
     emptyList = true;
   }
 
-  const handleChange = async e => {
-    const newData = { lastPurchased: Date.now() };
+  const handlePurchase = async e => {
+    // will return only one item in the array
+    const itemSelected = items.filter(item => {
+      return item.id === e.target.id;
+    });
+
+    const lastPurchasedDate = itemSelected[0].lastPurchased
+      ? itemSelected[0].lastPurchased
+      : 0;
+
+    const calculatedDate = calculateEstimate(
+      lastPurchasedDate,
+      itemSelected[0].frequency,
+      1,
+    );
+
+    const newData = { lastPurchased: Date.now(), nextPurchase: calculatedDate };
     const db = firebase.firestore();
 
     const itemRef = db.collection('items').doc(e.target.id);
@@ -35,7 +51,7 @@ const List = () => {
             <li key={item.id}>
               <input
                 type="checkbox"
-                onChange={handleChange}
+                onChange={handlePurchase}
                 id={item.id}
                 checked={
                   (item.lastPurchased &&
