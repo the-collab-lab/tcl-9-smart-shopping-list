@@ -4,6 +4,7 @@ import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
 
 const List = () => {
+  console.log('render');
   const { items } = useContext(ItemsContext);
   const [searchTerm, setTerm] = useState('');
   const [filteredItems, setfilteredItems] = useState(items);
@@ -27,16 +28,21 @@ const List = () => {
     const filterItems = items.filter(item => {
       return item.name.includes(e.target.value);
     });
-    // console.log(filterItems);
+
     setfilteredItems(filterItems);
   };
+  // if (items.length === 0) {
+  //   return <span>Your list is empty! Please add an item.</span>;
+  // }
 
   return (
     <div>
       <h1>Items</h1>
       <input type="search" value={searchTerm} onChange={handleSearch}></input>
-      {filteredItems.length === 0 ? (
+      {items.length === 0 ? (
         <span>Your list is empty! Please add an item.</span>
+      ) : filteredItems.length === 0 ? (
+        <span>There's no match for {searchTerm}.</span>
       ) : (
         <ul>
           {filteredItems.map(item => (

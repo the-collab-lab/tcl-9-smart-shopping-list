@@ -10,17 +10,15 @@ const ItemsProvider = props => {
   const db = firebase.firestore();
 
   useEffect(() => {
-    if (token) {
-      db.collection('items')
-        .where('token', '==', token)
-        .onSnapshot(querySnapshot => {
-          const list = querySnapshot.docs.map(doc => {
-            const newObj = { ...doc.data(), id: doc.id };
-            return newObj;
-          });
-          setItems(list);
+    db.collection('items')
+      .where('token', '==', token)
+      .onSnapshot(querySnapshot => {
+        const list = querySnapshot.docs.map(doc => {
+          const newObj = { ...doc.data(), id: doc.id };
+          return newObj;
         });
-    }
+        setItems(list);
+      });
   }, [db, token]);
   return (
     <ItemsContext.Provider
