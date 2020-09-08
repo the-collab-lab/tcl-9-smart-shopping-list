@@ -4,7 +4,6 @@ import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
 
 const List = () => {
-  console.log('render');
   const { items } = useContext(ItemsContext);
   const [searchTerm, setTerm] = useState('');
   const [filteredItems, setfilteredItems] = useState(items);
