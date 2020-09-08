@@ -31,9 +31,6 @@ const List = () => {
 
     setfilteredItems(filterItems);
   };
-  // if (items.length === 0) {
-  //   return <span>Your list is empty! Please add an item.</span>;
-  // }
 
   return (
     <div>
