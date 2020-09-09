@@ -28,10 +28,13 @@ const List = () => {
     const calculatedDate = calculateEstimate(
       lastPurchasedDate,
       itemSelected[0].frequency,
-      1,
+      itemSelected[0].numberOfPurchases + 1,
     );
-
-    const newData = { lastPurchased: Date.now(), nextPurchase: calculatedDate };
+    const newData = {
+      lastPurchased: Date.now(),
+      nextPurchase: calculatedDate,
+      numberOfPurchases: itemSelected[0].numberOfPurchases + 1,
+    };
     const db = firebase.firestore();
 
     const itemRef = db.collection('items').doc(e.target.id);
@@ -66,6 +69,24 @@ const List = () => {
     }
   };
 
+  const getClassName = nextPurchase => {
+    console.log(nextPurchase);
+    if (nextPurchase <= 7) {
+      return 'soon';
+    } else if (nextPurchase <= 30) {
+      return 'kind-of-soon';
+    } else if (nextPurchase > 30) {
+      return 'not-so-soon';
+    } else {
+      return 'inactive';
+    }
+    // switch(nextPurchase) {
+    //   case nextPurchase < 7 : return "soon";
+    //   case nextPurchase <= 30 : return "kind-of-soon";
+    //   case nextPurchase > 30 : return "not-so-soon";
+    //   case nextPurchase === 0 : return "inactive";
+    // }
+  };
   return (
     <div>
       <h1>Items</h1>
@@ -77,7 +98,7 @@ const List = () => {
       ) : (
         <ul>
           {filteredItems.map(item => (
-            <li key={item.id}>
+            <li key={item.id} className={getClassName(item.nextPurchase)}>
               <input
                 type="checkbox"
                 onChange={handlePurchase}
