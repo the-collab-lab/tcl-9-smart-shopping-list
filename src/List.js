@@ -71,21 +71,20 @@ const List = () => {
 
   const getClassName = nextPurchase => {
     console.log(nextPurchase);
-    if (nextPurchase <= 7) {
-      return 'soon';
-    } else if (nextPurchase <= 30) {
-      return 'kind-of-soon';
-    } else if (nextPurchase > 30) {
-      return 'not-so-soon';
-    } else {
+  const getClassName = (nextPurchase, lastPurchased) => {
+    if (
+      lastPurchased &&
+      Date.now() - lastPurchased > 2 * nextPurchase * oneDayInMilliSecond
+    ) {
       return 'inactive';
     }
-    // switch(nextPurchase) {
-    //   case nextPurchase < 7 : return "soon";
-    //   case nextPurchase <= 30 : return "kind-of-soon";
-    //   case nextPurchase > 30 : return "not-so-soon";
-    //   case nextPurchase === 0 : return "inactive";
-    // }
+    if (nextPurchase <= 7) {
+      return 'soon';
+    } else if (nextPurchase < 30) {
+      return 'kind-of-soon';
+    } else if (nextPurchase >= 30) {
+      return 'not-so-soon';
+    }
   };
   return (
     <div>
@@ -98,8 +97,12 @@ const List = () => {
       ) : (
         <ul>
           {filteredItems.map(item => (
-            <li key={item.id} className={getClassName(item.nextPurchase)}>
+            <li
+              key={item.id}
+              className={getClassName(item.nextPurchase, item.lastPurchased)}
+            >
               <input
+                aria-label={getClassName(item.nextPurchase, item.lastPurchased)}
                 type="checkbox"
                 onChange={handlePurchase}
                 id={item.id}
