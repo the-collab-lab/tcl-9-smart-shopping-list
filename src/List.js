@@ -86,10 +86,14 @@ const List = () => {
       return 'not-so-soon';
     }
   };
+
   return (
     <div>
       <h1>Items</h1>
-      <input type="search" value={searchTerm} onChange={handleSearch}></input>
+      <label>
+        Search:
+        <input type="search" value={searchTerm} onChange={handleSearch}></input>
+      </label>
       {items.length === 0 ? (
         <span>Your list is empty! Please add an item.</span>
       ) : filteredItems.length === 0 ? (
@@ -101,25 +105,33 @@ const List = () => {
               key={item.id}
               className={getClassName(item.nextPurchase, item.lastPurchased)}
             >
-              <input
-                aria-label={getClassName(item.nextPurchase, item.lastPurchased)}
-                type="checkbox"
-                onChange={handlePurchase}
-                id={item.id}
-                checked={
-                  (item.lastPurchased &&
-                    now < item.lastPurchased + oneDayInMilliSecond) ||
-                  false
+              <label
+                aria-label={
+                  'this ' +
+                  item.name +
+                  ' will need to be purchase ' +
+                  getClassName(item.nextPurchase, item.lastPurchased)
                 }
-                disabled={
-                  item.lastPurchased &&
-                  now < item.lastPurchased + oneDayInMilliSecond
-                }
-              ></input>
+              >
               {item.name}
               <button type="button" id={item.id} onClick={deleteItem}>
                 Delete
               </button>
+                <input
+                  type="checkbox"
+                  onChange={handlePurchase}
+                  id={item.id}
+                  checked={
+                    (item.lastPurchased &&
+                      now < item.lastPurchased + oneDayInMilliSecond) ||
+                    false
+                  }
+                  disabled={
+                    item.lastPurchased &&
+                    now < item.lastPurchased + oneDayInMilliSecond
+                  }
+                ></input>
+              </label>
             </li>
           ))}
         </ul>
