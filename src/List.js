@@ -47,6 +47,25 @@ const List = () => {
     setfilteredItems(filterItems);
   };
 
+  const deleteItem = e => {
+    const deleteConfirm = window.confirm(
+      'Are you sure you want to delete this item?',
+    );
+    if (deleteConfirm) {
+      firebase
+        .firestore()
+        .collection('items')
+        .doc(e.target.id)
+        .delete()
+        .then(function() {
+          console.log('Document successfully deleted!');
+        })
+        .catch(function(error) {
+          console.error('Error removing document: ', error);
+        });
+    }
+  };
+
   return (
     <div>
       <h1>Items</h1>
@@ -74,6 +93,9 @@ const List = () => {
                 }
               ></input>
               {item.name}
+              <button type="button" id={item.id} onClick={deleteItem}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
