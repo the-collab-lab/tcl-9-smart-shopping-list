@@ -51,8 +51,8 @@ const List = () => {
     const deleteConfirm = window.confirm(
       'Are you sure you want to delete this item?',
     );
-    if (deleteConfirm === true) {
-      const db = firebase
+    if (deleteConfirm) {
+      firebase
         .firestore()
         .collection('items')
         .doc(e.target.id)
