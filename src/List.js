@@ -86,6 +86,13 @@ const List = () => {
       return 'not-so-soon';
     }
   };
+  const getARIA = (className, name) => {
+    if (className === 'inactive') {
+      return `${name} is inactive`;
+    } else {
+      return `this ${name} will need to be purchased ${className}`;
+    }
+  };
 
   return (
     <div>
@@ -106,12 +113,10 @@ const List = () => {
               className={getClassName(item.nextPurchase, item.lastPurchased)}
             >
               <label
-                aria-label={
-                  'this ' +
-                  item.name +
-                  ' will need to be purchase ' +
-                  getClassName(item.nextPurchase, item.lastPurchased)
-                }
+                aria-label={getARIA(
+                  getClassName(item.nextPurchase, item.lastPurchased),
+                  item.name,
+                )}
               >
               {item.name}
               <button type="button" id={item.id} onClick={deleteItem}>
