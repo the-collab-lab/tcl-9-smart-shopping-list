@@ -27,6 +27,8 @@ const AddItem = () => {
           name: inputValue,
           frequency: frequency,
           lastPurchased: null,
+          nextPurchase: frequency,
+          numberOfPurchases: 0,
         })
         .then(setSuccess(true));
     } else {

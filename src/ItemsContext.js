@@ -13,10 +13,31 @@ const ItemsProvider = props => {
     db.collection('items')
       .where('token', '==', token)
       .onSnapshot(querySnapshot => {
-        const list = querySnapshot.docs.map(doc => {
-          const newObj = { ...doc.data(), id: doc.id };
-          return newObj;
-        });
+        const list = querySnapshot.docs
+          .map(doc => {
+            const newObj = {
+              ...doc.data(),
+              id: doc.id,
+            };
+            return newObj;
+          })
+          .sort((a, b) => {
+            //sort by nextPurchase first
+            if (a.nextPurchase > b.nextPurchase) {
+              return 1;
+            }
+            if (a.nextPurchase < b.nextPurchase) {
+              return -1;
+            }
+            //sort by item name if the nextPurchase are the same
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+          });
+
         setItems(list);
       });
   }, [db, token]);
