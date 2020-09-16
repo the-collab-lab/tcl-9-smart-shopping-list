@@ -1,5 +1,30 @@
-#root {
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap');
+
+body {
   height: 100vh;
+  background-image: url('img/background.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3rem;
+}
+
+.welcome {
+  background-color: teal;
+  padding: 1rem;
+
+  form {
+    display: ;
+  }
 }
 
 .soon {
@@ -17,3 +42,6 @@
 .inactive {
   color: gray;
 }
+
+/* font-family: 'Cabin', sans-serif;
+font-family: 'Roboto Condensed', sans-serif; */

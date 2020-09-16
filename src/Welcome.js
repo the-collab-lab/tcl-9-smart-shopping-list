@@ -43,8 +43,8 @@ const Welcome = () => {
   };
 
   return (
-    <div>
-      <p>Welcome to your smart shopping list!</p>
+    <div className="welcome">
+      <h2>Orange You Glad You Made a List</h2>
       <button onClick={handleClick}>Create a new list</button>
       <p>-or-</p>
       <p>Join an existing shopping list by entering a three word token</p>
