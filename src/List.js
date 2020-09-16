@@ -69,8 +69,6 @@ const List = () => {
     }
   };
 
-  const getClassName = nextPurchase => {
-    console.log(nextPurchase);
   const getClassName = (nextPurchase, lastPurchased) => {
     if (
       lastPurchased &&
@@ -118,10 +116,10 @@ const List = () => {
                   item.name,
                 )}
               >
-              {item.name}
-              <button type="button" id={item.id} onClick={deleteItem}>
-                Delete
-              </button>
+                {item.name}
+                <button type="button" id={item.id} onClick={deleteItem}>
+                  Delete
+                </button>
                 <input
                   type="checkbox"
                   onChange={handlePurchase}
