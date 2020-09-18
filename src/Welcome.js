@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import useTokenHook from './useTokenHook';
+import './css/Welcome.css';
 
 const Welcome = () => {
   const { token, setLocalStorageToken } = useTokenHook();

@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Source+Sans+Pro:wght@300;400&display=swap');
 
-/* font-family: 'Playfair Display', serif;
-font-family: 'Source Sans Pro', sans-serif; */
+/* FONTS
+font-family: 'Playfair Display', serif;
+weight of 600 and 700
+
+font-family: 'Source Sans Pro', sans-serif;
+weight of 300 and 400
+*/
+
+/* COLORS
+orange: f4a431
+dark-orange: c65e26
+green: 366e41
+dark-green: 173e2e
+*/
 
 body {
   background-color: #173e2e;
@@ -14,47 +26,6 @@ body {
   align-items: center;
   justify-content: center;
   color: whitesmoke;
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-top: -2rem;
-}
-
-.welcome {
-  background-color: rgba(0, 0, 0, 0.77);
-  padding: 1rem;
-  font-family: 'Source Sans Pro', sans-serif;
-  border-radius: 1rem;
-}
-
-button,
-input {
-  display: block;
-  margin: auto;
-  height: 3rem;
-  text-align: center;
-}
-
-button {
-  background-image: linear-gradient(to right, #f4a431, #c65e26);
-  border: none;
-}
-
-button:hover {
-  box-shadow: 0 1rem 2rem rgba(96.1, 96.1, 96.1, 0.9);
-  cursor: pointer;
-}
-
-input {
-  margin-bottom: 1rem;
 }
 
 .soon {
@@ -72,15 +43,3 @@ input {
 .inactive {
   color: gray;
 }
-
-/* colors
-
-orange: f4a431
-dark-orange: c65e26
-green: 366e41
-dark-green: 173e2e
-
-image from 
-<span>Photo by <a href="https://unsplash.com/@erol?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Erol Ahmed</a> on <a href="https://unsplash.com/collections/996926/summer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-
-*/
