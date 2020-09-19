@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, Fragment } from 'react';
 import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
@@ -77,45 +77,48 @@ const List = () => {
   };
 
   return (
-    <div>
-      <h1>Items</h1>
-      <input type="search" value={searchTerm} onChange={handleSearch}></input>
-      {items.length === 0 ? (
-        <span>Your list is empty! Please add an item.</span>
-      ) : filteredItems.length === 0 ? (
-        <span>There's no match for {searchTerm}.</span>
-      ) : (
-        <ul>
-          {filteredItems.map(item => (
-            <li key={item.id}>
-              <input
-                type="checkbox"
-                onChange={handlePurchase}
-                id={item.id}
-                checked={
-                  (item.lastPurchased &&
-                    now < item.lastPurchased + oneDayInMilliSecond) ||
-                  false
-                }
-                disabled={
-                  item.lastPurchased &&
-                  now < item.lastPurchased + oneDayInMilliSecond
-                }
-              ></input>
-              {item.name}
-              <button type="button" id={item.id} onClick={handleDetailButton}>
-                Detail
-              </button>
-              <button type="button" id={item.id} onClick={deleteItem}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-      {modalData && <DetailModal data={modalData} />}
-      <NavLinks />
-    </div>
+    <Fragment>
+      {modalData && <DetailModal data={modalData} toggle={setModalData} />}
+
+      <div>
+        <h1>Items</h1>
+        <input type="search" value={searchTerm} onChange={handleSearch}></input>
+        {items.length === 0 ? (
+          <span>Your list is empty! Please add an item.</span>
+        ) : filteredItems.length === 0 ? (
+          <span>There's no match for {searchTerm}.</span>
+        ) : (
+          <ul>
+            {filteredItems.map(item => (
+              <li key={item.id}>
+                <input
+                  type="checkbox"
+                  onChange={handlePurchase}
+                  id={item.id}
+                  checked={
+                    (item.lastPurchased &&
+                      now < item.lastPurchased + oneDayInMilliSecond) ||
+                    false
+                  }
+                  disabled={
+                    item.lastPurchased &&
+                    now < item.lastPurchased + oneDayInMilliSecond
+                  }
+                ></input>
+                {item.name}
+                <button type="button" id={item.id} onClick={handleDetailButton}>
+                  Detail
+                </button>
+                <button type="button" id={item.id} onClick={deleteItem}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        <NavLinks />
+      </div>
+    </Fragment>
   );
 };
 
