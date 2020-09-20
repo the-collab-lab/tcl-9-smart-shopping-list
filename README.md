@@ -144,3 +144,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 ✕
+
+### image crediting
+Background image by [Erol Ahmed](https://unsplash.com/@erol?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/collections/996926/summer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText).
