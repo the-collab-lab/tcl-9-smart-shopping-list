@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import useTokenHook from './useTokenHook';
+import './css/Welcome.css';
 
 const Welcome = () => {
   const { token, setLocalStorageToken } = useTokenHook();
@@ -43,8 +44,9 @@ const Welcome = () => {
   };
 
   return (
-    <div>
-      <p>Welcome to your smart shopping list!</p>
+    <div className="welcome">
+      <h1>Orange You Glad</h1>
+      <h2>you made a list</h2>
       <button onClick={handleClick}>Create a new list</button>
       <p>-or-</p>
       <p>Join an existing shopping list by entering a three word token</p>
