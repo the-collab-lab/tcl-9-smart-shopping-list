@@ -2,6 +2,7 @@
 .navlink {
   color: #f4a431;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 .navlink-active {
