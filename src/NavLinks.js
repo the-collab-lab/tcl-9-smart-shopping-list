@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './css/NavLinks.css';
 
 const NavLinks = () => (
   <div>
@@ -7,16 +8,15 @@ const NavLinks = () => (
       <li>
         <NavLink
           to="/list"
-          activeStyle={{
-            fontWeight: 'bold',
-          }}
+          className="navlink"
+          activeClassName="navlink-active"
         >
           List
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add" activeStyle={{ fontWeight: 'bold' }}>
-          Add an item
+        <NavLink to="/add" className="navlink" activeClassName="navlink-active">
+          Add Item
         </NavLink>
       </li>
     </ul>
