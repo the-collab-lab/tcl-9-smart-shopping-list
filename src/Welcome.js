@@ -45,8 +45,9 @@ const Welcome = () => {
 
   return (
     <div className="welcome">
-      <h1>Orange You Glad</h1>
-      <h2>you made a list</h2>
+      <h1>
+        Orange You Glad <span className="header-span">You Made a List</span>
+      </h1>
       <button onClick={handleClick}>Create a new list</button>
       <p>-or-</p>
       <p>Join an existing shopping list by entering a three word token</p>

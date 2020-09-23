@@ -16,19 +16,21 @@ import TokenProvider from './TokenProvider';
 function App() {
   return (
     <Router>
-      <TokenProvider>
-        <ItemsProvider>
-          <Switch>
-            <Route exact path="/" component={Welcome} />
-            <PrivateRoute path="/list">
-              <List />
-            </PrivateRoute>
-            <PrivateRoute path="/add">
-              <AddItem />
-            </PrivateRoute>
-          </Switch>
-        </ItemsProvider>
-      </TokenProvider>
+      <div className="main">
+        <TokenProvider>
+          <ItemsProvider>
+            <Switch>
+              <Route exact path="/" component={Welcome} />
+              <PrivateRoute path="/list">
+                <List />
+              </PrivateRoute>
+              <PrivateRoute path="/add">
+                <AddItem />
+              </PrivateRoute>
+            </Switch>
+          </ItemsProvider>
+        </TokenProvider>
+      </div>
     </Router>
   );
 }

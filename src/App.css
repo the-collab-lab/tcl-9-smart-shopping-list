@@ -13,6 +13,7 @@ orange: f4a431
 dark-orange: c65e26
 green: 366e41
 dark-green: 173e2e
+whitesmoke/light gray: 	f5f5f5
 */
 
 body {
@@ -25,9 +26,17 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  color: whitesmoke;
+  color: black;
 }
 
+.main {
+  background-color: rgba(245, 245, 245, 0.85);
+  padding: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  border-radius: 1rem;
+}
+
+/* THESE NEED TO BE REMOVED AND ADDED INTO LIST.CSS */
 .soon {
   color: red;
 }
@@ -50,6 +59,10 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+/* 
+NEEDS TO BE REMOVED TO ANOTHER CSS FILE.
+COMMENTED OUT IN ORDER TO NOT INTERFERE WITH WELCOME CSS
+
 .modal_content {
   position: absolute;
   background-color: white;
@@ -68,4 +81,4 @@ body {
 
 .close:hover {
   cursor: pointer;
-}
+} */
