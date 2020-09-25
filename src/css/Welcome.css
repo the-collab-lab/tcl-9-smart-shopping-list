@@ -1,24 +1,19 @@
-.welcome {
-  background-color: rgba(0, 0, 0, 0.77);
-  padding: 1rem;
-  font-family: 'Source Sans Pro', sans-serif;
-  border-radius: 1rem;
-}
-
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   font-weight: 700;
 }
 
-h2 {
+.header-span {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  margin-top: -2rem;
+  margin-top: -0.5rem;
+  text-transform: lowercase;
+  display: block;
 }
 
 button,
-input {
+.token-input {
   display: block;
   margin: auto;
   height: 3rem;
@@ -28,13 +23,14 @@ input {
 button {
   background-image: linear-gradient(to right, #f4a431, #c65e26);
   border: none;
+  margin-bottom: 1rem;
 }
 
 button:hover {
-  box-shadow: 0 1rem 2rem rgba(96.1, 96.1, 96.1, 0.9);
+  box-shadow: 0 1rem 2rem rgba(23, 62, 46, 0.9);
   cursor: pointer;
 }
 
-input {
+.token-input {
   margin-bottom: 1rem;
 }

@@ -1,0 +1,73 @@
+.additem {
+  font-size: 1.5rem;
+}
+
+.additem__form {
+  width: 90%;
+  margin: 0;
+  padding: 5%;
+}
+
+.additem__text-input {
+  width: 98%;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.additem__fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.additem__fieldset-legend {
+  margin: 0;
+  padding-top: 5%;
+  text-align: left;
+  width: 100%;
+}
+
+label.additem__text-label {
+  text-align: left;
+  display: block;
+  width: 98%;
+  margin: 0 auto 5% 0;
+}
+
+.additem__radio-input {
+  margin: 10% 1% 0 0;
+  display: inline-block;
+  height: auto;
+}
+
+.additem__radio-label {
+  margin-right: 5%;
+}
+
+.additem__button {
+  font-size: 1.25rem;
+  padding: 15px 34px;
+  border-radius: 8px;
+  margin-top: 10%;
+}
+
+.additem__button:hover {
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+}

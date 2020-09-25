@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
 import useTokenHook from './useTokenHook';
+import './css/AddItem.css';
 
 const AddItem = () => {
   const { items } = useContext(ItemsContext);
@@ -41,19 +42,25 @@ const AddItem = () => {
   };
 
   return (
-    <div>
-      <form>
-        <label htmlFor="item">Item</label>
+    <div className="additem">
+      <form className="additem__form">
+        <label htmlFor="item" className="additem__text-label">
+          Enter an item:
+        </label>
         <input
+          className="additem__text-input"
           id="item"
           type="text"
           name="items"
-          placeholder="enter grocery item here"
+          placeholder="Enter grocery item here"
           onChange={event => setInputValue(event.target.value)}
         />
-        <fieldset>
-          <label htmlFor="soon">Soon</label>
+        <fieldset className="additem__fieldset">
+          <legend className="additem__fieldset-legend">
+            How soon do you need this item?
+          </legend>
           <input
+            className="additem__radio-input"
             id="soon"
             name="frequency"
             type="radio"
@@ -61,8 +68,11 @@ const AddItem = () => {
             onChange={handleOnChange}
             checked={frequency === 7}
           />
-          <label htmlFor="kindofsoon">Kind of Soon</label>
+          <label htmlFor="soon" className="additem__radio-label">
+            Soon
+          </label>
           <input
+            className="additem__radio-input"
             id="kindofsoon"
             name="frequency"
             type="radio"
@@ -70,8 +80,11 @@ const AddItem = () => {
             onChange={handleOnChange}
             checked={frequency === 14}
           />
-          <label htmlFor="notsoon">Not Soon</label>
+          <label htmlFor="kindofsoon" className="additem__radio-label">
+            Kind of Soon
+          </label>
           <input
+            className="additem__radio-input"
             id="notsoon"
             name="frequency"
             type="radio"
@@ -79,9 +92,16 @@ const AddItem = () => {
             onChange={handleOnChange}
             checked={frequency === 30}
           />
+          <label htmlFor="notsoon" className="additem__radio-label">
+            Not Soon
+          </label>
         </fieldset>
-        <button type="submit" onClick={event => addItem(event)}>
-          submit
+        <button
+          className="additem__button hvr-grow"
+          type="submit"
+          onClick={event => addItem(event)}
+        >
+          Submit
         </button>
       </form>
       {success ? `${inputValue} successfully added to list` : null}

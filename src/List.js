@@ -4,6 +4,7 @@ import NavLinks from './NavLinks';
 import { ItemsContext } from './ItemsContext';
 import calculateEstimate from './lib/estimates';
 import DetailModal from './DetailModal';
+import './css/List.css';
 
 const List = () => {
   const { items } = useContext(ItemsContext);
@@ -106,38 +107,35 @@ const List = () => {
     <Fragment>
       {modalData && <DetailModal data={modalData} toggle={setModalData} />}
 
-      <div>
+      <div className="grocery-list">
         <h1>Items</h1>
-        <label>
-          Search:
+        <div className="search-box">
+          <label htmlFor="search">Search an item:</label>
           <input
+            id="search"
+            className="search-input"
             type="search"
             value={searchTerm}
             onChange={handleSearch}
           ></input>
-        </label>
+        </div>
+
         {items.length === 0 ? (
-          <span>Your list is empty! Please add an item.</span>
+          <h2>Your list is empty! Please add an item.</h2>
         ) : filteredItems.length === 0 ? (
-          <span>There's no match for {searchTerm}.</span>
+          <h2>There's no match for {searchTerm}.</h2>
         ) : (
-          <ul>
+          <div className="items">
             {filteredItems.map(item => (
-              <li
-                key={item.id}
-                className={getClassName(item.nextPurchase, item.lastPurchased)}
-              >
-                <label
-                  aria-label={getARIA(
-                    getClassName(item.nextPurchase, item.lastPurchased),
-                    item.name,
-                  )}
+              <div key={item.id} className="item">
+                <div
+                  className={`item-control ${getClassName(
+                    item.nextPurchase,
+                    item.lastPurchased,
+                  )}`}
                 >
-                  {item.name}
-                  <button type="button" id={item.id} onClick={deleteItem}>
-                    Delete
-                  </button>
                   <input
+                    className="item-checkbox"
                     type="checkbox"
                     onChange={handlePurchase}
                     id={item.id}
@@ -151,21 +149,38 @@ const List = () => {
                       now < item.lastPurchased + oneDayInMilliSecond
                     }
                   ></input>
-                  {item.name}
-                  <button
+                  <label
+                    data-content={item.name}
+                    className="checkbox-label"
+                    htmlFor={item.id}
+                    aria-label={getARIA(
+                      getClassName(item.nextPurchase, item.lastPurchased),
+                      item.name,
+                    )}
+                  >
+                    {item.name}
+                  </label>
+                </div>
+                <div className="item-buttons">
+                  <span
+                    aria-label="click to see more detail"
                     type="button"
                     id={item.id}
                     onClick={handleDetailButton}
-                  >
-                    Detail
-                  </button>
-                  <button type="button" id={item.id} onClick={deleteItem}>
-                    Delete
-                  </button>
-                </label>
-              </li>
+                    className="detail-btn"
+                  ></span>
+
+                  <span
+                    aria-label="click to delete item"
+                    type="button"
+                    id={item.id}
+                    onClick={deleteItem}
+                    className="delete-btn"
+                  ></span>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
         <NavLinks />
       </div>
