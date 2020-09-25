@@ -13,7 +13,7 @@ h1 {
 }
 
 button,
-input {
+.token-input {
   display: block;
   margin: auto;
   height: 3rem;
@@ -31,6 +31,6 @@ button:hover {
   cursor: pointer;
 }
 
-input {
+.token-input {
   margin-bottom: 1rem;
 }

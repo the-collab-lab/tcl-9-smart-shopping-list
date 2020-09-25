@@ -30,33 +30,11 @@ body {
 }
 
 .main {
+  width: 30vw;
   background-color: rgba(245, 245, 245, 0.85);
   padding: 1rem;
   font-family: 'Source Sans Pro', sans-serif;
   border-radius: 1rem;
-}
-
-/* THESE NEED TO BE REMOVED AND ADDED INTO LIST.CSS */
-.soon {
-  color: red;
-}
-
-.kind-of-soon {
-  color: orange;
-}
-
-.not-so-soon {
-  color: green;
-}
-
-.inactive {
-  color: gray;
-}
-.modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
 }
 
 /* 
