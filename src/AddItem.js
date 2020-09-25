@@ -42,9 +42,11 @@ const AddItem = () => {
   };
 
   return (
-    <div>
+    <div className="additem">
       <form className="additem__form">
-        <label htmlFor="item">Item</label>
+        <label htmlFor="item" className="additem__text-label">
+          Enter an item:
+        </label>
         <input
           className="additem__text-input"
           id="item"

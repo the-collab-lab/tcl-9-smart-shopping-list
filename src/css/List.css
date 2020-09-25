@@ -1,0 +1,82 @@
+.grocery-list {
+  font-size: 1.5rem;
+}
+.items {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+.search-input {
+  height: 2rem;
+  margin-left: 10px;
+}
+.item-control.soon {
+  color: red;
+}
+
+.item-control.kind-of-soon {
+  color: orange;
+}
+
+.item-control.not-so-soon {
+  color: green;
+}
+
+.item-control.inactive {
+  color: gray;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.item-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+.item-checkbox:checked ~ .checkbox-label::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.checkbox-label {
+  position: relative;
+}
+.checkbox-label::before {
+  position: absolute;
+  content: attr(data-content);
+  opacity: 0.8;
+  clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #363839;
+  transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.detail-btn,
+.delete-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.delete-btn {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url('../img/trash-solid.svg') no-repeat center;
+}
+.detail-btn {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url('../img/info-solid.svg') no-repeat center;
+  margin-right: 0.3rem;
+}

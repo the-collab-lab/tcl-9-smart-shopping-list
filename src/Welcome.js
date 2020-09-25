@@ -54,6 +54,7 @@ const Welcome = () => {
       <form>
         <label htmlFor="entertoken">Share token</label>
         <input
+          className="token-input"
           id="entertoken"
           type="text"
           placeholder="three word token"
