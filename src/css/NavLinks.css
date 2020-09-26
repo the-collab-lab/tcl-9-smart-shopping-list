@@ -1,0 +1,21 @@
+/* Nav-Link*/
+.navlink {
+  color: #f4a431;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navlink-active {
+  font-weight: 900;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0px;
+}

@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './css/NavLinks.css';
+import { BiListOl } from 'react-icons/bi';
+import { BiListPlus } from 'react-icons/bi';
 
 const NavLinks = () => (
   <div>
@@ -7,16 +10,15 @@ const NavLinks = () => (
       <li>
         <NavLink
           to="/list"
-          activeStyle={{
-            fontWeight: 'bold',
-          }}
+          className="navlink"
+          activeClassName="navlink-active"
         >
-          List
+          <BiListOl /> List
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add" activeStyle={{ fontWeight: 'bold' }}>
-          Add an item
+        <NavLink to="/add" className="navlink" activeClassName="navlink-active">
+          <BiListPlus /> Add Item
         </NavLink>
       </li>
     </ul>
