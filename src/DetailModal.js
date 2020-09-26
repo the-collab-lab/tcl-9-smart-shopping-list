@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/DetailModal.css';
 
 function DetailModal({ data, toggle }) {
   const { name, nextPurchase, numberOfPurchases, lastPurchased } = data;
@@ -10,12 +11,20 @@ function DetailModal({ data, toggle }) {
     <div className="modal">
       <div className="modal_content">
         <span className="close" onClick={handleClick}>
-          &larr;
+          ⇦
         </span>
-        <p>{name}</p>
-        <p>Next Purchase:{nextPurchase}</p>
-        <p>Number of purchases: {numberOfPurchases}</p>
-        <p>Last Purchase: {new Date(lastPurchased).toLocaleDateString()}</p>
+        <p className="modal_itemname">{name}</p>
+        <p>
+          <span className="modal_span">Next Purchase:</span> {nextPurchase}
+        </p>
+        <p>
+          <span className="modal_span">Number of purchases:</span>{' '}
+          {numberOfPurchases}
+        </p>
+        <p>
+          <span className="modal_span">Last Purchase:</span>{' '}
+          {new Date(lastPurchased).toLocaleDateString()}
+        </p>
       </div>
     </div>
   );
