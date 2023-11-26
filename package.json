@@ -11,8 +11,14 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-firestore": "^1.0.1",
-    "react-scripts": "^3.4.1"
+    "react-firestore": "^1.0.1"
+  },
+  "devDependencies": {
+    "cypress": "^3.8.1",
+    "react-scripts": "5.0.1"
+  },
+  "overrides": {
+    "@svgr/webpack": "^6.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,8 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "cypress": "^3.8.1"
   }
 }
