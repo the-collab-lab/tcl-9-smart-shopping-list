@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import useTokenHook from './useTokenHook';
+import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
 import './css/Welcome.css';
 
 const Welcome = () => {
@@ -14,7 +15,8 @@ const Welcome = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    setLocalStorageToken();
+    console.log('Creating new lists is disabled');
+    // setLocalStorageToken();
   };
 
   const handleInput = e => {
@@ -63,6 +65,7 @@ const Welcome = () => {
         </button>
       </form>
       {showErrorMessage && <p>Sorry not a token! Try again...</p>}
+      <ArchivalNoticeModal />
     </div>
   );
 };
